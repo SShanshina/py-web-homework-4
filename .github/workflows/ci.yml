@@ -1,0 +1,30 @@
+name: CI test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubutu-latest
+#    needs: check
+    steps:
+      - name: Chekout
+        uses: actions/checkout@v2
+
+      - name: Login to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login
+
+      - name: Build the Docker image
+        run: docker build -t web:latest .
+
+      - name: Push the Docker container to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run:
+          heroku container:push web --app ${{ secrets. HEROKU_APP_NAME }}
+          heroku container:release web --app ${{ secrets. HEROKU_APP_NAME }}
+          heroku ps:scale web=1 -a ${{ secrets. HEROKU_APP_NAME }}
