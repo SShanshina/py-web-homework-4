@@ -5,3 +5,4 @@ django-environ
 gunicorn
 django-filter
 django-heroku
+environ
