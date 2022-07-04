@@ -1,5 +1,4 @@
 venv
 .idea
 .env
-requirements-dev.txt
 .pytest_cache
