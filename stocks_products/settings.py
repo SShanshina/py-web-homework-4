@@ -15,11 +15,7 @@ import environ
 from pathlib import Path
 import django_heroku
 import dj_database_url
-import psycopg2
 
-DATABASE_URL = os.environ['DATABASE_URL']
-
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 env = environ.Env(
     DEBUG=(bool, True)
@@ -92,17 +88,16 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': env('POSTGRES_DB', default='stocks-products'),
-#         'USER': env('POSTGRES_USER', default='stocks-products'),
-#         'PASSWORD': env('POSTGRES_PASSWORD', default='stocks-products'),
-#         'HOST': env('POSTGRES_HOST', default='localhost'),
-#         'PORT': env('POSTGRES_PORT', default=5432),
-#     }
-# }
-DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB', default='stocks-products'),
+        'USER': env('POSTGRES_USER', default='stocks-products'),
+        'PASSWORD': env('POSTGRES_PASSWORD', default='stocks-products'),
+        'HOST': env('POSTGRES_HOST', default='localhost'),
+        'PORT': env('POSTGRES_PORT', default=5432),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
