@@ -14,6 +14,7 @@ import os
 import environ
 from pathlib import Path
 import django_heroku
+import dj_database_url
 
 env = environ.Env(
     DEBUG=(bool, True)
@@ -163,3 +164,5 @@ REST_FRAMEWORK = {
 }
 
 django_heroku.settings(locals())
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)

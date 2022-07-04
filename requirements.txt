@@ -6,3 +6,4 @@ gunicorn
 django-filter
 django-heroku
 environ
+dj-database-url
