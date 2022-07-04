@@ -14,8 +14,6 @@ import os
 import environ
 from pathlib import Path
 import django_heroku
-import dj_database_url
-
 
 env = environ.Env(
     DEBUG=(bool, True)
