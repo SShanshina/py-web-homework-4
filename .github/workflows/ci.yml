@@ -20,7 +20,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
       - name: Lint with flake8
-        run: flake8 . --exclude .git,__pycache__,logistic/migtations,manage.py,.venv,venv,admin.py:F401 --max-line-length=120
+        run: flake8 . --exclude .git,__pycache__,logistic/migrations,manage.py,.venv,venv,admin.py --max-line-length=120
       - name: Test with pytest
         run: pytest
 
