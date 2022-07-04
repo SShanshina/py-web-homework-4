@@ -15,6 +15,11 @@ import environ
 from pathlib import Path
 import django_heroku
 import dj_database_url
+import psycopg2
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 env = environ.Env(
     DEBUG=(bool, True)
