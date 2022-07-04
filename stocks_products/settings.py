@@ -92,17 +92,17 @@ WSGI_APPLICATION = 'stocks_products.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('POSTGRES_DB', default='stocks-products'),
-        'USER': env('POSTGRES_USER', default='stocks-products'),
-        'PASSWORD': env('POSTGRES_PASSWORD', default='stocks-products'),
-        'HOST': env('POSTGRES_HOST', default='localhost'),
-        'PORT': env('POSTGRES_PORT', default=5432),
-    }
-}
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env('POSTGRES_DB', default='stocks-products'),
+#         'USER': env('POSTGRES_USER', default='stocks-products'),
+#         'PASSWORD': env('POSTGRES_PASSWORD', default='stocks-products'),
+#         'HOST': env('POSTGRES_HOST', default='localhost'),
+#         'PORT': env('POSTGRES_PORT', default=5432),
+#     }
+# }
+DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -169,5 +169,3 @@ REST_FRAMEWORK = {
 }
 
 django_heroku.settings(locals())
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
