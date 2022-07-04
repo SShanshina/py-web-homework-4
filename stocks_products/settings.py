@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': env('POSTGRES_DB', default='stocks-products'),
         'USER': env('POSTGRES_USER', default='stocks-products'),
         'PASSWORD': env('POSTGRES_PASSWORD', default='stocks-products'),
-        'HOST': env('POSTGRES_HOST', default='0.0.0.0'),
+        'HOST': env('POSTGRES_HOST', default='localhost'),
         'PORT': env('POSTGRES_PORT', default=5432),
     }
 }
