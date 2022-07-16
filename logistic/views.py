@@ -24,6 +24,6 @@ class StockViewSet(ModelViewSet):
 
 def test_changes(request):
     context = {
-        'test_phrase': 'Привет!'
+        'test_changes': {'test_phrase': 'Привет!'}
     }
     return render(request, template_name='test_changes/test_changes.html', context=context)
