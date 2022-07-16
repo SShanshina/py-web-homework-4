@@ -19,6 +19,6 @@ from logistic.views import test_changes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/test_changes/', test_changes, name='test_changes'),
+    path('test_changes/', test_changes, name='test_changes'),
     path('api/v1/', include('logistic.urls')),
 ]
