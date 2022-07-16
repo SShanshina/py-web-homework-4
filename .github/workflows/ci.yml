@@ -21,8 +21,8 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Lint with flake8
         run: flake8 . --exclude .git,__pycache__,logistic/migrations,manage.py,.venv,venv,admin.py --max-line-length=120
-#      - name: Test with pytest
-#        run: pytest
+      - name: Test with pytest
+        run: pytest
 
   build:
     runs-on: ubutu-latest
