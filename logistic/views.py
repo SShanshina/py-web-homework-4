@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from rest_framework.viewsets import ModelViewSet
@@ -19,3 +20,10 @@ class StockViewSet(ModelViewSet):
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['products', ]
     search_fields = ['$products__title', '$products__description']
+
+
+def test_changes(request):
+    context = {
+        'test_phrase': 'Привет!'
+    }
+    return render(request, template_name='test_changes.html', context=context)
